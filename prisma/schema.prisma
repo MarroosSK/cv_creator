@@ -53,7 +53,7 @@ model JobExperience {
   yearsTo   String
   position  String
   desc      String
-  file      File   @relation(fields: [fileId], references: [id])
+  file      File   @relation(fields: [fileId], references: [id], onDelete: Cascade)
   fileId    String
 }
 
@@ -63,6 +63,6 @@ model Education {
   yearsTo   String
   school    String
   desc      String
-  file      File   @relation(fields: [fileId], references: [id])
+  file      File   @relation(fields: [fileId], references: [id], onDelete: Cascade)
   fileId    String
 }

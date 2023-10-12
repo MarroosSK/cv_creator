@@ -89,6 +89,10 @@ export async function DELETE(
         id: params.id,
         userId,
       },
+      include: {
+        Education: true,
+        JobExperience: true,
+      },
     });
     console.log(userFiles);
 
