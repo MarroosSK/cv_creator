@@ -31,7 +31,7 @@ export default function SwiperGallery() {
       >
         <SwiperSlide>
           <Image
-            src="/1pdf.jpg"
+            src="/resumePreview.jpg"
             alt="product preview"
             width={600}
             height={700}
@@ -41,7 +41,7 @@ export default function SwiperGallery() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src="/1pdf.jpg"
+            src="/resumePreview.jpg"
             alt="product preview"
             width={600}
             height={700}
@@ -51,7 +51,7 @@ export default function SwiperGallery() {
         </SwiperSlide>
         <SwiperSlide>
           <Image
-            src="/1pdf.jpg"
+            src="/resumePreview.jpg"
             alt="product preview"
             width={600}
             height={700}
