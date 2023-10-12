@@ -1,0 +1,68 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id     String @id @unique
+  userId String //matches kinde user id
+
+  file File[]
+
+  stripeCustomerId       String?   @unique @map(name: "stripe_customer_id")
+  stripeSubscriptionId   String?   @unique @map(name: "stripe_subscription_id")
+  stripePriceId          String?   @map(name: "stripe_price_id")
+  stripeCurrentPeriodEnd DateTime? @map(name: "stripe_current_period_end")
+}
+
+model File {
+  id              String   @id @default(cuid())
+  name            String
+  userName        String?
+  userEmail       String?
+  userTitle       String?
+  userDateOfBirth String?
+  userPhone       String?
+  userAddress     String?
+  userSocialPage  String?
+  userSummary     String?
+  userKnowledge   String[]
+  userLanguage    String[]
+  userHobby       String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  User          User?           @relation(fields: [userId], references: [id])
+  userId        String?
+  JobExperience JobExperience[]
+  Education     Education[]
+}
+
+model JobExperience {
+  id        String @id @default(cuid())
+  yearsFrom String
+  yearsTo   String
+  position  String
+  desc      String
+  file      File   @relation(fields: [fileId], references: [id])
+  fileId    String
+}
+
+model Education {
+  id        String @id @default(cuid())
+  yearsFrom String
+  yearsTo   String
+  school    String
+  desc      String
+  file      File   @relation(fields: [fileId], references: [id])
+  fileId    String
+}
